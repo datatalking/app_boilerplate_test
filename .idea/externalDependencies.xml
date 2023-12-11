@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalDependencies">
+    <plugin id="Pythonid" />
+    <plugin id="com.github.jk1.ytplugin" />
+    <plugin id="com.intellij.CloudConfig" />
+    <plugin id="me.lensvol.blackconnect" />
+    <plugin id="net.ashald.envfile" />
+    <plugin id="net.seesharpsoft.intellij.plugins.csv" />
+    <plugin id="org.jetbrains.plugins.github" />
+    <plugin id="org.jetbrains.plugins.terminal" />
+    <plugin id="org.jetbrains.plugins.yaml" />
+    <plugin id="org.toml.lang" />
+    <plugin id="ru.meanmail.plugin.requirements" />
+  </component>
+</project>
