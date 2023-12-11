@@ -4,6 +4,7 @@
 # cannot import name 'escape' from 'jinja2'
 import csv
 import requests
+import black
 
 
 URL = "http://www.nasdaq.com/quotes/nasdaq-100-stocks.aspx?render=download"
@@ -16,7 +17,6 @@ def get_data():
     for line in csv.DictReader(data.splitlines(), skipinitialspace=True):
         RESULTS['children'].append({
             'name': line['Name'],
-            'symbol': line['Symbol'],
             'symbol': line['Symbol'],
             'price': line['lastsale'],
             'net_change': line['netchange'],

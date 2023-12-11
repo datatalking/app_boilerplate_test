@@ -11,20 +11,23 @@ of Matplotlib. First, we'll pull the data from GitHub.
 """
 
 from datetime import datetime
-
+# import black
 import matplotlib.pyplot as plt
 import numpy as np
 
 import matplotlib.dates as mdates
 
-try:
-    # Try to fetch a list of Matplotlib releases and their dates
-    # from https://api.github.com/repos/matplotlib/matplotlib/releases
-    import json
-    import urllib.request
+# def main():
 
-    url = 'https://api.github.com/repos/matplotlib/matplotlib/releases'
-    url += '?per_page=100'
+
+try:
+	# Try to fetch a list of Matplotlib releases and their dates
+	# from https://api.github.com/repos/matplotlib/matplotlib/releases
+	import json
+	import urllib.request
+
+	url = 'https://api.github.com/repos/matplotlib/matplotlib/releases'
+	url += '?per_page=100'
     data = json.loads(urllib.request.urlopen(url, timeout=1).read().decode())
 
     dates = []
@@ -54,22 +57,21 @@ except Exception:
     # Convert date strings (e.g. 2014-10-18) to datetime
     dates = [datetime.strptime(d, "%Y-%m-%d") for d in dates]
 
-##############################################################################
-# Next, we'll create a stem plot with some variation in levels as to
-# distinguish even close-by events. We add markers on the baseline for visual
-# emphasis on the one-dimensional nature of the time line.
-#
-# For each event, we add a text label via `~.Axes.annotate`, which is offset
-# in units of points from the tip of the event line.
-#
-# Note that Matplotlib will automatically plot datetime inputs.
+print(len(names))
+# print(len(names)f'fnames version list length')
 
+print(len(dates))
+# TODO test that each list is the same length in test
+# TODO create auxilary inputs from dict, matrix, db and csv via pandas
+# print(len(dates)f'dates {dates}version list length')
 
-# Choose some nice levels
+timeline_variable = 'matplotlib'
+
+# a range of levels
 levels = np.tile([-5, 5, -3, 3, -1, 1],
-                 int(np.ceil(len(dates)/6)))[:len(dates)]
+                 int(np.ceil(len(dates) / 6)))[:len(dates)]
 
-# Create figure and plot a stem plot with the date
+# Create a figure and plot a stem plot with the date
 fig, ax = plt.subplots(figsize=(8.8, 4), layout="constrained")
 ax.set(title="Matplotlib release dates")
 
@@ -94,4 +96,15 @@ ax.yaxis.set_visible(False)
 ax.spines[["left", "top", "right"]].set_visible(False)
 
 ax.margins(y=0.1)
+
+from matplotlib import pyplot as plt
+
+save_path = 'output/'
+
+plt.savefig(f'{save_path}timeline_{timeline_variable}.png')
+plt.savefig(f'{save_path}timeline_{timeline_variable}.pdf')
+plt.close(fig)
 plt.show()
+
+# if __name__ == "__main__":
+# 	main()
