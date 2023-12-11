@@ -10,21 +10,22 @@ we show how to create a simple timeline using the dates for recent releases
 of Matplotlib. First, we'll pull the data from GitHub.
 """
 
-import matplotlib.pyplot as plt
-import numpy as np
-import matplotlib.dates as mdates
 from datetime import datetime
 
+import matplotlib.pyplot as plt
+import numpy as np
+
+import matplotlib.dates as mdates
 
 try:
     # Try to fetch a list of Matplotlib releases and their dates
     # from https://api.github.com/repos/matplotlib/matplotlib/releases
-    import urllib.request
     import json
+    import urllib.request
 
     url = 'https://api.github.com/repos/matplotlib/matplotlib/releases'
     url += '?per_page=100'
-    data = json.loads(urllib.request.urlopen(url, timeout=.4).read().decode())
+    data = json.loads(urllib.request.urlopen(url, timeout=1).read().decode())
 
     dates = []
     names = []
@@ -34,7 +35,6 @@ try:
             names.append(item['tag_name'])
     # Convert date strings (e.g. 2014-10-18) to datetime
     dates = [datetime.strptime(d, "%Y-%m-%d") for d in dates]
-
 
 except Exception:
     # In case the above fails, e.g. because of missing internet connection
@@ -70,7 +70,7 @@ levels = np.tile([-5, 5, -3, 3, -1, 1],
                  int(np.ceil(len(dates)/6)))[:len(dates)]
 
 # Create figure and plot a stem plot with the date
-fig, ax = plt.subplots(figsize=(8.8, 4), constrained_layout=True)
+fig, ax = plt.subplots(figsize=(8.8, 4), layout="constrained")
 ax.set(title="Matplotlib release dates")
 
 ax.vlines(dates, 0, levels, color="tab:red")  # The vertical stems.
@@ -84,29 +84,14 @@ for d, l, r in zip(dates, levels, names):
                 horizontalalignment="right",
                 verticalalignment="bottom" if l > 0 else "top")
 
-# format xaxis with 4 month intervals
+# format x-axis with 4-month intervals
 ax.xaxis.set_major_locator(mdates.MonthLocator(interval=4))
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
 plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
 
-# remove y axis and spines
+# remove y-axis and spines
 ax.yaxis.set_visible(False)
 ax.spines[["left", "top", "right"]].set_visible(False)
 
 ax.margins(y=0.1)
 plt.show()
-
-
-#############################################################################
-#
-# .. admonition:: References
-#
-#    The use of the following functions, methods, classes and modules is shown
-#    in this example:
-#
-#    - `matplotlib.axes.Axes.annotate`
-#    - `matplotlib.axes.Axes.vlines`
-#    - `matplotlib.axis.Axis.set_major_locator`
-#    - `matplotlib.axis.Axis.set_major_formatter`
-#    - `matplotlib.dates.MonthLocator`
-#    - `matplotlib.dates.DateFormatter`

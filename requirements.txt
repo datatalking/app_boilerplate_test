@@ -9,13 +9,13 @@ requests
 six
 wsgiref
 blackd
-pip
-zlib
-wheel
+pip~=23.3.1
+zlib~=1.2.13
+wheel~=0.41.2
 certifi
 urllib3
-openssl
-setuptools
+openssl~=3.0.12
+setuptools~=68.0.0
 
 pyparsing
 packaging
