@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=40.8.0", "wheel"]
+build-backend = "setuptools.build_meta:__legacy__"
+
+[project]
+name = "app-boilerplate-test"
+version = "1.0.0"
+authors = [
+	{ name = "Andrew Schell", email = "andrewscience304@gmail.com" },
+]
+description = "Python package developer's cheat sheet (using pyproject.toml)."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+	"Development Status :: 3 - Alpha",
+	"License :: OSI Approved :: MIT License",
+	"Natural Language :: English",
+	"Operating System :: OS Independent",
+	"Programming Language :: Python",
+	"Programming Language :: Python :: 3.8",
+	"Programming Language :: Python :: 3.9",
+]
+dependencies = [
+	"stringcase ~=1.2.0",
+]
