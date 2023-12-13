@@ -26,7 +26,7 @@ env_path = Path(".") / ".env"
 load_dotenv(dotenv_path=env_path)
 
 # GitHub token for API access
-github_token = os.getenv("GITHUB_TOKEN", "your_token_here")
+github_token = os.getenv("GITHUB_TOKEN", "USER_TOKEN")
 
 # Load data from YAML file or GitHub API
 data_path = "./data/timeline_data.yml"

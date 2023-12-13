@@ -4,7 +4,6 @@
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
 from timeline import main as main_timeline
-import app
 import os
 
 # timeline()
@@ -15,6 +14,7 @@ def main():
 	get_username_os(user_name)
 	project_TODO_scanner()
 	run_timeline()
+	# run_app()
 
 
 def get_username_os(user_name):
