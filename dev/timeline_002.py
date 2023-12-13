@@ -31,17 +31,17 @@ github_token = os.getenv("GITHUB_TOKEN", "your_token_here")
 # Load data from YAML file or GitHub API
 data_path = "./data/timeline_data.yml"
 if os.path.exists(data_path):
-	with open(data_path, "r") as file:
-		data = yaml.safe_load(file)
+    with open(data_path, "r") as file:
+        data = yaml.safe_load(file)
 else:
-	try:
-		url = f'https://api.github.com/repos/matplotlib/matplotlib/releases?per_page=100&access_token={github_token}'
-		data = json.loads(urllib.request.urlopen(url, timeout=1).read().decode())
-		with open(data_path, "w") as file:
-			yaml.dump(data, file)
-	except Exception:
-		# Fallback data in case of failure
-		data = []
+    try:
+        url = f'https://api.github.com/repos/matplotlib/matplotlib/releases?per_page=100&access_token={github_token}'
+        data = json.loads(urllib.request.urlopen(url, timeout=1).read().decode())
+        with open(data_path, "w") as file:
+            yaml.dump(data, file)
+    except Exception:
+        # Fallback data in case of failure
+        data = []
 
 # Extract relevant information
 dates = [datetime.strptime(item["published_at"].split("T")[0], "%Y-%m-%d") for item in data if
@@ -60,8 +60,8 @@ ax.plot(dates, np.zeros_like(dates), "-o", color="k", markerfacecolor="w")  # Ba
 
 # annotate lines
 for d, l, r in zip(dates, levels, names):
-	ax.annotate(r, xy=(d, l), xytext=(-3, np.sign(l) * 3), textcoords="offset points",
-	            horizontalalignment="right", verticalalignment="bottom" if l > 0 else "top")
+    ax.annotate(r, xy=(d, l), xytext=(-3, np.sign(l) * 3), textcoords="offset points",
+                horizontalalignment="right", verticalalignment="bottom" if l > 0 else "top")
 
 # format x-axis with 4-month intervals
 ax.xaxis.set_major_locator(mdates.MonthLocator(interval=4))
