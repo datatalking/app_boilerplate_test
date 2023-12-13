@@ -13,7 +13,6 @@ import os
 
 def main():
 	get_username_os(user_name)
-	print_hi(user_name)
 	project_TODO_scanner()
 	run_timeline()
 
@@ -26,15 +25,6 @@ def get_username_os(user_name):
 	"""
 	print(f'{user_name}, get_username_os has run')
 	return os.getenv("USERNAME")
-
-
-def print_hi(user_name):
-	"""
-	Use a breakpoint in the code line below to debug your script
-	:param user_name:
-	:return:
-	"""
-	print(f'Hi, {user_name}')  # Press ⌘F8 to toggle the breakpoint.
 
 
 def project_TODO_scanner():
@@ -73,7 +63,7 @@ def run_timeline():
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 	user_name = os.environ.get("USER")
-	print_hi(f'{user_name},you are USER')
+	print(f'{user_name},you are USER')
 	main()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
