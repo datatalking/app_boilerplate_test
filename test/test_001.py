@@ -2,13 +2,19 @@
 
 import os
 import tomli
+from pip._internal.exceptions import InstallationError
 
 Optional = bool
+pyproject_toml = str
+setup_py = str
+req_name = str
 
 
 # TODO refactor to test if pyproject_toml is included and has which tier of code
 # TODO there are eight tiers TEST feature for now
-def load_pyproject_toml(use_pep517: Optional[bool], pyproject_toml: str, setup_py: str, req_name: str):
+def load_pyproject_toml(pyproject_toml: str, setup_py: str, req_name: str):
+	# TODO triage use_pep517 issue
+	# TODO add Optional[bool]
 	# TODO define, test, write Optional[BuildSystemDetails]:
 	"""Load the pyproject.toml file.
 	Parameters:
@@ -40,6 +46,8 @@ def load_pyproject_toml(use_pep517: Optional[bool], pyproject_toml: str, setup_p
 			f"{req_name} does not appear to be a Python project: "
 			f"neither 'setup.py' nor 'pyproject.toml' found."
 		)
+		# TODO write 'CREATE FILE IF NOT EXISTS' clause here for TOML
+		pass
 
 	if has_pyproject:
 		with open(pyproject_toml, encoding="utf-8") as f:
