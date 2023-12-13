@@ -13,9 +13,29 @@ def main():
 # app()
 
 
+def main():
+
+
 def print_hi(name):
 	# Use a breakpoint in the code line below to debug your script.
 	print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+
+
+def project_TODO_scanner():
+	"""
+	Here we import the TODO_scanner to add to task_pipeline, github issues, TOML
+	:return:
+	"""
+
+
+def connect_app_database():
+	"""
+	connect to .env for database specified
+	:return:
+	"""
+
+
+# TODO write tests for database from a cookie cutter template, add sphinx
 
 
 # Press the green button in the gutter to run the script.
